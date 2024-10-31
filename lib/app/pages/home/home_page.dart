@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:pokemon_info_2/app/components/custom_filter_widget.dart';
 import 'package:pokemon_info_2/app/components/custom_input_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,7 +13,14 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return const CupertinoPageScaffold(
-      child: CustomInputWidget(),
+      child: SingleChildScrollView( 
+        child: Column(
+          children: [
+            CustomInputWidget(),
+            CustomFilterWidget(),
+          ]
+        )
+      )
     );
   }
 }
