@@ -38,7 +38,9 @@ class CustomFilterWidget extends StatelessWidget {
                   
                 ),
               ),
-              SizedBox(width: 20),
+              SizedBox(
+                width: 20
+              ),
               Expanded(
                 flex: 1,
                 child: CupertinoButton(

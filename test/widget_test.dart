@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pokemon_info_2/app/pages/home/home_page.dart';
+import 'package:pokemon_info_2/home_module.dart';
 
 import 'package:pokemon_info_2/main.dart';
 

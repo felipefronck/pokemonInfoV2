@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pokemon_info_2/app/app.widget.dart';
+import 'package:pokemon_info_2/app.widget.dart';
 
 
 void main() {
