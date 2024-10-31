@@ -13,7 +13,7 @@ class CustomFilterWidget extends StatelessWidget {
           const Text(
             "Filtros",
             style: TextStyle(
-              fontSize: 20,
+              fontSize: 25,
             ),
           ),
           const SizedBox(height: 15),
