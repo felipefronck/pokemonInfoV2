@@ -7,8 +7,19 @@ class CustomInputWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Padding(
       padding: EdgeInsets.all(20.0),
-      child: CupertinoTextField(
-        placeholder: "Procurar Pokemon",
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Procurar Pokemon",
+            style: TextStyle(
+              fontSize: 12,
+            ),
+          ),
+          SizedBox(height: 6,),
+          CupertinoTextField(
+          ),
+        ],
       ),
     );
   }
