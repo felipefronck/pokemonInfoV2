@@ -13,7 +13,7 @@ class CustomInputWidget extends StatelessWidget {
           Text(
             "Procurar Pokemon",
             style: TextStyle(
-              fontSize: 12,
+              fontSize: 15,
             ),
           ),
           SizedBox(height: 6),

@@ -27,7 +27,7 @@ class CustomFilterWidget extends StatelessWidget {
                     Text(
                       "Nome",
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 15,
                       )
                     ),
                     SizedBox(height: 6,),
@@ -44,7 +44,7 @@ class CustomFilterWidget extends StatelessWidget {
                     Text(
                       "Tipo",
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 15,
                       )
                     ),
                     SizedBox(height: 6,),
@@ -61,7 +61,7 @@ class CustomFilterWidget extends StatelessWidget {
                     Text(
                       "Movimentos",
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 15,
                       )
                     ),
                     SizedBox(height: 6,),
@@ -74,11 +74,17 @@ class CustomFilterWidget extends StatelessWidget {
                 flex: 1,
                 child: Column(
                   children: [
-                    const SizedBox(height: 6),
-                    CupertinoButton.filled(
-                      onPressed: onPressedBtnFiltrar,
-                      borderRadius: BorderRadius.circular(50),
-                      child: const Text("Filtrar"),
+                    const SizedBox(height: 20),
+                    SizedBox(
+                      height: 35,
+                      child: CupertinoButton.filled(
+                        onPressed: onPressedBtnFiltrar,
+                        borderRadius: BorderRadius.circular(50),
+                        padding: EdgeInsets.zero,
+                        child: const Center(
+                          child: Text("Filtrar")
+                        ),
+                      ),
                     ),
                   ],
                 ),
