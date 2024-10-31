@@ -5,49 +5,82 @@ class CustomFilterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(20),
+    return Padding(
+      padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             "Filtros",
             style: TextStyle(
               fontSize: 20,
             ),
           ),
+          const SizedBox(height: 15),
           Row(
             children: [
-              Expanded(
+              const Expanded(
                 flex: 1,
-                child: CupertinoTextField(
-                  
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Nome",
+                      style: TextStyle(
+                        fontSize: 12,
+                      )
+                    ),
+                    SizedBox(height: 6,),
+                    CupertinoTextField(),
+                  ],
                 ),
               ),
-              SizedBox(width: 20),
-              Expanded(
+              const SizedBox(width: 25),
+              const Expanded(
                 flex: 1,
-                child: CupertinoTextField(
-                  
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Tipo",
+                      style: TextStyle(
+                        fontSize: 12,
+                      )
+                    ),
+                    SizedBox(height: 6,),
+                    CupertinoTextField(),
+                  ],
                 ),
               ),
-              SizedBox(width: 20),
-              Expanded(
+              const SizedBox(width: 25),
+              const Expanded(
                 flex: 1,
-                child: CupertinoTextField(
-                  
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Movimentos",
+                      style: TextStyle(
+                        fontSize: 12,
+                      )
+                    ),
+                    SizedBox(height: 6,),
+                    CupertinoTextField(),
+                  ],
                 ),
               ),
-              SizedBox(
-                width: 20
-              ),
+              const SizedBox(width: 25),
               Expanded(
                 flex: 1,
-                child: CupertinoButton(
-                  onPressed: onPressedBtnFiltrar(),
-                  child: Text(
-                    "Filtrar"
-                  ),
+                child: Column(
+                  children: [
+                    const SizedBox(height: 6),
+                    CupertinoButton.filled(
+                      onPressed: onPressedBtnFiltrar,
+                      borderRadius: BorderRadius.circular(50),
+                      child: const Text("Filtrar"),
+                    ),
+                  ],
                 ),
               )
             ],
@@ -55,5 +88,9 @@ class CustomFilterWidget extends StatelessWidget {
         ],
       )
     );
+  }
+
+  onPressedBtnFiltrar() async {
+    return 0;
   }
 }

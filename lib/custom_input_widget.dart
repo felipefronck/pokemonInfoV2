@@ -16,9 +16,7 @@ class CustomInputWidget extends StatelessWidget {
               fontSize: 12,
             ),
           ),
-          SizedBox(
-            height: 6,
-          ),
+          SizedBox(height: 6),
           CupertinoTextField(),
         ],
       ),
