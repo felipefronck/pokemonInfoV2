@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:pokemon_info_2/api_service.dart';
-import 'package:pokemon_info_2/pokemon_model.dart';
+import 'package:pokemon_info_2/services/api_service.dart';
+import 'package:pokemon_info_2/models/pokemon_model.dart';
 
 class CustomInputWidget extends StatelessWidget {
   CustomInputWidget({super.key});
@@ -31,24 +31,24 @@ class CustomInputWidget extends StatelessWidget {
 }
 
 void onSubmittedPokemonSearch(controller) async{
-  String query = controller.text.toLowerCase();
-  ApiService apiService = ApiService();
-  final List<PokemonModel> _pokemonList = [];
+  // String query = controller.text.toLowerCase();
+  // ApiService apiService = ApiService();
+  // final List<PokemonModel> _pokemonList = [];
 
-  try {
-    PokemonModel pokemon = await apiService.getAll(query);
+  // try {
+  //   PokemonModel pokemon = await apiService.getAll(query);
     
-    setState(() {
-      _pokemonCard = apiService.getAll(query);
-      _pokemonList.add(pokemon);
-    });
+  //   setState(() {
+  //     _pokemonCard = apiService.getAll(query);
+  //     _pokemonList.add(pokemon);
+  //   });
 
-    controller.clear();
+  //   controller.clear();
 
-  } catch (e) {
-    print("erro: $e");
-  }
+  // } catch (e) {
+  //   print("erro: $e");
+  // }
 
-  controller.clear();
+  // controller.clear();
 
 }

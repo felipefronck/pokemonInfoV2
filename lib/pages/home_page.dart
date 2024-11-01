@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:pokemon_info_2/custom_filter_widget.dart';
-import 'package:pokemon_info_2/custom_input_widget.dart';
+import 'package:pokemon_info_2/widgets/custom_filter_widget.dart';
+import 'package:pokemon_info_2/widgets/custom_input_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

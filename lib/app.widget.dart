@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:pokemon_info_2/home_module.dart';
+import 'package:pokemon_info_2/pages/home_page.dart';
 
 class Appwidget extends StatelessWidget {
   const Appwidget({super.key});

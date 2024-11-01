@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:pokemon_info_2/pokemon_model.dart';
+import 'package:pokemon_info_2/models/pokemon_model.dart';
 
 class ApiService {
   final url = "https://pokeapi.co/api/v2/pokemon/";
