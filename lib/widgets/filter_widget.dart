@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-class CustomFilterWidget extends StatelessWidget {
-  const CustomFilterWidget({super.key});
+class FilterWidget extends StatelessWidget {
+  const FilterWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
