@@ -4,5 +4,5 @@ import 'package:pokemon_info_2/app.widget.dart';
 
 
 void main() {
-  runApp(Appwidget());
+  runApp(const Appwidget());
 }

@@ -12,12 +12,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return const CupertinoPageScaffold(
+    return CupertinoPageScaffold(
       child: SingleChildScrollView( 
         child: Column(
           children: [
             CustomInputWidget(),
-            CustomFilterWidget(),
+            const CustomFilterWidget(),
           ]
         )
       )
