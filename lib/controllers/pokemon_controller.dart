@@ -9,7 +9,7 @@ class PokemonController {
   onSubmittedPokemonSearch(query) async {
     try {
       PokemonModel result = await apiService.getAll(query);
-      pokemons.value.add(result);
+      pokemons.value = [... pokemons.value, result];
       
     } catch (e) {
       //TODO

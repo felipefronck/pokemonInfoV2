@@ -17,7 +17,7 @@ class PokemonModel {
     return PokemonModel(
         id: map['id'], 
         name: map['name'],
-        imgpath: map['sprites']['other']['showdown']['front_default'] ?? '', 
+        imgpath: map['sprites']['other']['showdown']['front_default'] ?? map['sprites']['front_default'], 
         moves: List<String>.from(map['moves'].map((move) => move['move']['name'])), 
         types: List<String>.from(map['types'].map((type) => type['type']['name'])),
       );

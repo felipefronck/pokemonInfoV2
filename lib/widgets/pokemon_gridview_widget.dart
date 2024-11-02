@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:pokemon_info_2/models/pokemon_model.dart';
+import 'package:pokemon_info_2/widgets/pokemon_card_widget.dart';
 
-class PokemonGridviewWidget extends StatelessWidget {
+class PokemonGridviewWidget extends StatelessWidget{
   final List<PokemonModel> pokemons;
 
   const PokemonGridviewWidget({
@@ -14,12 +15,12 @@ class PokemonGridviewWidget extends StatelessWidget {
     return GridView.builder(
       itemCount: pokemons.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 4
+        crossAxisCount: 7
         ), 
       itemBuilder: (context, index) {
         final pokemon = pokemons[index];
-        return card;
+        return PokemonCardWidget(pokemon: pokemon);
       }
-      );
+    );
   }
 }
