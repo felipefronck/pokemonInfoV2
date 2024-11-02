@@ -14,23 +14,41 @@ class PokemonCardWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Container(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(8.0),
         decoration: BoxDecoration(
-          color: CupertinoColors.systemGrey6,
-          borderRadius: BorderRadius.circular(12.0),
+          color: CupertinoColors.systemGrey3,
+          borderRadius: BorderRadius.circular(3.0),
           boxShadow: [
             BoxShadow(
-              color: CupertinoColors.systemGrey.withOpacity(0.2),
-              blurRadius: 4.0,
+              color: CupertinoColors.systemGrey.withOpacity(0.8),
+              blurRadius: 10.0,
               offset: const Offset(0, 4),
             )
           ]
         ),
         child: Column(
           children: [
-            Text(pokemon.id.toString()),
-            Text(pokemon.name),
-            Image.network(pokemon.imgpath)
+            Text(
+              "#${pokemon.id.toString()}",
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+              ),
+            Text(
+              pokemon.name.toUpperCase(),
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+              ),
+              const SizedBox(height: 20),
+            SizedBox(
+              width: 100,
+              height: 100,
+              child: Image.network(
+                pokemon.imgpath,
+                fit: BoxFit.scaleDown,
+              ),
+            )
           ],
         ),
       ),

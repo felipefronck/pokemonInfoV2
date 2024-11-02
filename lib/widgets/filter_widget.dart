@@ -77,8 +77,9 @@ class FilterWidget extends StatelessWidget {
                     const SizedBox(height: 20),
                     SizedBox(
                       height: 35,
-                      child: CupertinoButton.filled(
+                      child: CupertinoButton(
                         onPressed: onPressedBtnFiltrar,
+                        color: const Color.fromARGB(255, 63, 63, 65),
                         borderRadius: BorderRadius.circular(50),
                         padding: EdgeInsets.zero,
                         child: const Center(
@@ -97,6 +98,6 @@ class FilterWidget extends StatelessWidget {
   }
 
   onPressedBtnFiltrar() async {
-    return 0;
+    return;
   }
 }
