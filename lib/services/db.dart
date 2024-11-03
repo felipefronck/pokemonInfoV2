@@ -27,8 +27,6 @@ class Db {
 
   _onCreate(db, version) async {
     await db.execute(_pokemon);
-    await db.execute(_tipos);
-    await db.execute(_movimentos);
   }
 
   String get _pokemon => '''
@@ -39,19 +37,4 @@ class Db {
     );
   ''';
 
-  String get _movimentos => '''
-    CREATE TABLE movimentos (
-      pokemon_id INTEGER,
-      movimento TEXT,
-      FOREIGN KEY (pokemon_id) REFERENCES pokemon (id)
-    );
-  ''';
-
-  String get _tipos => '''
-    CREATE TABLE tipos (
-      pokemon_id INTEGER,
-      tipo TEXT,
-      FOREIGN KEY (pokemon_id) REFERENCES pokemon (id)
-    );
-  ''';
 }
