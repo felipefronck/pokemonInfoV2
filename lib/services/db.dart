@@ -33,7 +33,9 @@ class Db {
     CREATE TABLE pokemon (
       id INTEGER PRIMARY KEY,
       nome TEXT,
-      img TEXT
+      img TEXT,
+      movimentos TEXT,
+      tipos TEXT
     );
   ''';
 

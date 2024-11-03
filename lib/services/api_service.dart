@@ -7,6 +7,6 @@ class ApiService {
 
   Future<PokemonModel> getAll(String query) async{
     final response = await dio.get('$url$query');
-    return PokemonModel.fromJson(response.data);
+    return PokemonModel.fromApi(response.data);
   }
 }
