@@ -1,25 +1,24 @@
+import 'package:pokemon_info_2/models/pokemon_model.dart';
 import 'package:pokemon_info_2/services/db.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseController {
 
-  Future<List<Map<String, dynamic>>> getDatabase() async{
+  Future<List<PokemonModel>> getPokemons() async {
     final db = await Db.instance.database;
+    final List<Map<String, dynamic>> pokemons = await db.query('pokemon');
 
-    return await db.query('pokemon');
+    return List.generate(pokemons.length, (index) {
+      return PokemonModel.fromMap(pokemons[index]);
+    });
   }
 
-  Future<void> inserirPokemon(int id, String nome, String img, String movimentos, String tipos) async {
+  Future<void> insertPokemon(PokemonModel pokemon) async {
     final db = await Db.instance.database;
 
     await db.insert(
-      'pokemon',{
-        'id': id,
-        'nome': nome,
-        'img': img,
-        'movimentos': movimentos,
-        'tipos': tipos
-      },
+      'pokemon',
+      pokemon.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
