@@ -25,8 +25,8 @@ class _HomePageState extends State<HomePage> {
     return CupertinoPageScaffold(
       child: SafeArea( 
         child: ValueListenableBuilder(
-          valueListenable: controller.pokemons,
-          builder:(context, pokemons, _) {
+          valueListenable: controller.pokemonsFiltrados,
+          builder:(context, pokemonsFiltrados, _) {
             return Column(
               children: [
                 InputWidget(
@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Expanded(
                   child: PokemonGridviewWidget(
-                    pokemons: pokemons,
+                    pokemons: pokemonsFiltrados,
                     onDeletePokemon: (id) {
                       controller.deletePokemon(id);
                     })
