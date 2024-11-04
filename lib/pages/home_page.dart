@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    controller.loadPokemonsDb();
+    controller.loadPokemonsDb(context);
   }
 
   @override
@@ -31,12 +31,16 @@ class _HomePageState extends State<HomePage> {
               children: [
                 InputWidget(
                   onSubmittedPokemonSearch: (query) {
-                    controller.onSubmittedPokemonSearch(query);
+                    controller.onSubmittedPokemonSearch(query, context);
                   },
                 ),
                 const FilterWidget(),
                 Expanded(
-                  child: PokemonGridviewWidget(pokemons: pokemons)
+                  child: PokemonGridviewWidget(
+                    pokemons: pokemons,
+                    onDeletePokemon: (id) {
+                      controller.deletePokemon(id);
+                    })
                   )
               ]
             );

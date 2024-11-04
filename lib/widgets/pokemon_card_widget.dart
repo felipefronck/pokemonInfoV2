@@ -3,10 +3,12 @@ import 'package:pokemon_info_2/models/pokemon_model.dart';
 
 class PokemonCardWidget extends StatelessWidget {
   final PokemonModel pokemon;
+  final VoidCallback onDelete;
 
   const PokemonCardWidget ({
     super.key, 
-    required this.pokemon
+    required this.pokemon,
+    required this.onDelete,
   });
 
   @override
@@ -34,19 +36,30 @@ class PokemonCardWidget extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
               ),
-            Text(
-              pokemon.name.toUpperCase(),
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
-              ),
+            SizedBox(
+              child: Text(
+                pokemon.name.toUpperCase(),
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+                ),
+            ),
               const SizedBox(height: 20),
             SizedBox(
-              width: 80,
-              height: 80,
+              width: 65,
+              height: 65,
               child: Image.network(
                 pokemon.imgpath,
                 fit: BoxFit.scaleDown,
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: CupertinoButton(
+                 onPressed: onDelete,
+                child: Icon(
+                CupertinoIcons.delete
+                )
               ),
             )
           ],

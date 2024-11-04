@@ -22,4 +22,14 @@ class DatabaseController {
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
+
+  Future<void> deletePokemon(int id) async {
+    final db = await Db.instance.database;
+
+    await db.delete(
+      'pokemon',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
 }

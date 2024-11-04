@@ -4,10 +4,12 @@ import 'package:pokemon_info_2/widgets/pokemon_card_widget.dart';
 
 class PokemonGridviewWidget extends StatelessWidget{
   final List<PokemonModel> pokemons;
+  final Function(int id) onDeletePokemon;
 
   const PokemonGridviewWidget({
     super.key, 
-    required this.pokemons
+    required this.pokemons,
+    required this.onDeletePokemon,
     });
 
   @override
@@ -19,7 +21,10 @@ class PokemonGridviewWidget extends StatelessWidget{
         ), 
       itemBuilder: (context, index) {
         final pokemon = pokemons[index];
-        return PokemonCardWidget(pokemon: pokemon);
+        return PokemonCardWidget(
+          pokemon: pokemon,
+          onDelete: () => onDeletePokemon(pokemon.id)
+          );
       }
     );
   }
