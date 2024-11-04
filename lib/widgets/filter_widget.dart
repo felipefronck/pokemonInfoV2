@@ -1,7 +1,18 @@
 import 'package:flutter/cupertino.dart';
 
 class FilterWidget extends StatelessWidget {
-  const FilterWidget({super.key});
+  final TextEditingController nameController;
+  final TextEditingController typeController;
+  final TextEditingController moveController;
+  final VoidCallback onFilter;
+
+  const FilterWidget({
+    super.key,
+    required this.nameController,
+    required this.typeController,
+    required this.moveController,
+    required this.onFilter
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,41 +30,45 @@ class FilterWidget extends StatelessWidget {
           const SizedBox(height: 15),
           Row(
             children: [
-              const Expanded(
+              Expanded(
                 flex: 1,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       "Nome",
                       style: TextStyle(
                         fontSize: 15,
                       )
                     ),
-                    SizedBox(height: 6,),
-                    CupertinoTextField(),
+                    const SizedBox(height: 6,),
+                    CupertinoTextField(
+                      controller: nameController,
+                    ),
                   ],
                 ),
               ),
               const SizedBox(width: 25),
-              const Expanded(
+              Expanded(
                 flex: 1,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       "Tipo",
                       style: TextStyle(
                         fontSize: 15,
                       )
                     ),
-                    SizedBox(height: 6,),
-                    CupertinoTextField(),
+                    const SizedBox(height: 6,),
+                    CupertinoTextField(
+                      controller: typeController,
+                    ),
                   ],
                 ),
               ),
               const SizedBox(width: 25),
-              const Expanded(
+              Expanded(
                 flex: 1,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,7 +80,9 @@ class FilterWidget extends StatelessWidget {
                       )
                     ),
                     SizedBox(height: 6,),
-                    CupertinoTextField(),
+                    CupertinoTextField(
+                      controller: moveController,
+                    ),
                   ],
                 ),
               ),
@@ -78,7 +95,7 @@ class FilterWidget extends StatelessWidget {
                     SizedBox(
                       height: 35,
                       child: CupertinoButton(
-                        onPressed: onPressedBtnFiltrar,
+                        onPressed: onFilter,
                         color: const Color.fromARGB(255, 63, 63, 65),
                         borderRadius: BorderRadius.circular(50),
                         padding: EdgeInsets.zero,
@@ -95,9 +112,5 @@ class FilterWidget extends StatelessWidget {
         ],
       )
     );
-  }
-
-  onPressedBtnFiltrar() async {
-    return;
   }
 }

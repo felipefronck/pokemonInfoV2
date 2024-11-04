@@ -34,7 +34,12 @@ class _HomePageState extends State<HomePage> {
                     controller.onSubmittedPokemonSearch(query, context);
                   },
                 ),
-                const FilterWidget(),
+                FilterWidget(
+                  nameController: controller.nameController,
+                  typeController: controller.typeController,
+                  moveController: controller.moveController,
+                  onFilter: controller.filter,
+                ),
                 Expanded(
                   child: PokemonGridviewWidget(
                     pokemons: pokemons,

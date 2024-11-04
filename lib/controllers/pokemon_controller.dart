@@ -9,12 +9,20 @@ import 'package:pokemon_info_2/widgets/dialog_insert_pokemon_widget.dart';
 class PokemonController {
   final DatabaseController dbController = DatabaseController();
   final ApiService apiService = ApiService();
+
   ValueNotifier<List<PokemonModel>> pokemons = ValueNotifier([]);
+  ValueNotifier<List<PokemonModel>> pokemonsFiltrados = ValueNotifier([]);
+
+  final nameController = TextEditingController();
+  final typeController = TextEditingController();
+  final moveController = TextEditingController();
 
   Future<void> loadPokemonsDb(BuildContext context) async {
     try {
       final pokemonsDb = await dbController.getPokemons();
       pokemons.value = pokemonsDb;
+      pokemonsFiltrados.value = pokemonsDb;
+
     } catch (e) {
       showErroLoadDb(context, '$e');
     }
@@ -36,5 +44,19 @@ class PokemonController {
   Future<void> deletePokemon(int id) async {
     await dbController.deletePokemon(id);
     pokemons.value = pokemons.value.where((pokemon) => pokemon.id != id).toList();
+  }
+
+  void filter() {
+    final nameFilter = nameController.text.toLowerCase();
+    final typeFilter = typeController.text.toLowerCase();
+    final moveFilter = moveController.text.toLowerCase();
+
+    pokemonsFiltrados.value = pokemons.value.where((pokemon) {
+      final nameMatch = pokemon.name.toLowerCase().contains(nameFilter);
+      final typeMatch = pokemon.types.any((type) => type.toLowerCase().contains(typeFilter));
+      final moveMatch = pokemon.moves.any((move) => move.toLowerCase().contains(moveFilter));
+
+      return nameMatch && typeMatch && moveMatch;
+    }).toList();
   }
 }
