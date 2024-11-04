@@ -23,9 +23,11 @@ class PokemonController {
   onSubmittedPokemonSearch(query, BuildContext context) async {
     try {
       PokemonModel result = await apiService.getAll(query);
-      pokemons.value = [... pokemons.value, result];
-
       await dbController.insertPokemon(result);
+
+      // pokemons.value = [... pokemons.value, result]; //inserindo ao final da lista
+      await loadPokemonsDb(context);
+
     } catch (e) {
       showErroInserPokemon(context, '$e');
     }
