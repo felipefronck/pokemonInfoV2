@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 class PokemonModel {
@@ -15,7 +14,7 @@ class PokemonModel {
     required this.moves, 
     required this.types,
   });
-    //construtor da resp da api
+    //construtor para um pokemonmodel a partir da resp da api
   factory PokemonModel.fromApi(Map<String, dynamic> apiResponse){
     return PokemonModel(
         id: apiResponse['id'], 
@@ -39,7 +38,7 @@ class PokemonModel {
 factory PokemonModel.fromMap(Map<String, dynamic> map){
   return PokemonModel(
     id: map['id'],
-    name: map['name'],
+    name: map['nome'],
     imgpath: map['img'],
     moves: List<String>.from(jsonDecode(map['movimentos'])),
     types: List<String>.from(jsonDecode(map['tipos']))

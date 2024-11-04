@@ -2,22 +2,20 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
 class Db {
-  
-  Db._();
-
   static final Db instance = Db._();
   static Database? _database;
 
-  get database async {
+  Db._();
+
+  Future<Database> get database async {
     if (_database != null){
-      // ignore: recursive_getters
-      return database;
+      return _database!;
     } else {
       return await _initDatabase();
     }
   }
 
-  _initDatabase() async {
+  Future<Database> _initDatabase() async {
     return await openDatabase(
       join(await getDatabasesPath(), 'pokemon.db'),
       version: 1,
@@ -25,7 +23,7 @@ class Db {
     );
   }
 
-  _onCreate(db, version) async {
+  Future<void>_onCreate(Database db, int version) async {
     await db.execute(_pokemon);
   }
 
@@ -38,5 +36,4 @@ class Db {
       tipos TEXT
     );
   ''';
-
 }
