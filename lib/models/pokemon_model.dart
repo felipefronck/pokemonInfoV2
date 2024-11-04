@@ -35,15 +35,13 @@ class PokemonModel {
     };
   }
 
-factory PokemonModel.fromMap(Map<String, dynamic> map){
-  return PokemonModel(
-    id: map['id'],
-    name: map['nome'],
-    imgpath: map['img'],
-    moves: List<String>.from(jsonDecode(map['movimentos'])),
-    types: List<String>.from(jsonDecode(map['tipos']))
-  );
-
-}
-
+  factory PokemonModel.fromMap(Map<String, dynamic> map){
+    return PokemonModel(
+      id: map['id'],
+      name: map['nome'],
+      imgpath: map['img'],
+      moves: List<String>.from(jsonDecode(map['movimentos'])),
+      types: List<String>.from(jsonDecode(map['tipos']))
+    );
+  }
 }

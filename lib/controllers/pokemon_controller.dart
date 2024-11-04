@@ -12,9 +12,8 @@ class PokemonController {
     try {
       final pokemonsDb = await dbController.getPokemons();
       pokemons.value = pokemonsDb;
-      print('Pokémons carregados do banco de dados: ${pokemons.value}');
     } catch (e) {
-      print('Erro ao carregar Pokémons do banco de dados: $e');
+      //TODO
     }
   }
   
@@ -22,11 +21,8 @@ class PokemonController {
     try {
       PokemonModel result = await apiService.getAll(query);
       pokemons.value = [... pokemons.value, result];
-      print('Pokemon adicionado: ${result.name}');
 
       await dbController.insertPokemon(result);
-      print('Pokemon salvo no bando de dados');
-      
     } catch (e) {
       //TODO
     }
