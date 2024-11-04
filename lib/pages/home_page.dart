@@ -15,6 +15,12 @@ class _HomePageState extends State<HomePage> {
   final PokemonController controller = PokemonController();
 
   @override
+  void initState() {
+    super.initState();
+    controller.loadPokemonsDb();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       child: SafeArea( 
