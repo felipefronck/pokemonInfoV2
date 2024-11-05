@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
       context: context, 
       builder: (BuildContext context) {
         return CupertinoAlertDialog(
-          title: Text('Erro'),
+          title: Text('Ocorreu um erro ao filtrar'),
           content: Text(e),
           actions: [
             CupertinoDialogAction(

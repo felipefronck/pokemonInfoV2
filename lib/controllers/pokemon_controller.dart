@@ -83,7 +83,7 @@ class PokemonController {
         pokemonsFiltrados.value = aux;
       }
     } catch (e) {
-      showErroFiltragem(context, 'Erro ao aplicar filtros: $e');
+      showErroFiltragem(context, 'Erro ao aplicar filtros: $e'); //degub
     }
   }
 }
