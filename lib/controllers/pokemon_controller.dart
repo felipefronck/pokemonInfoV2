@@ -3,8 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:pokemon_info_2/controllers/db_controller.dart';
 import 'package:pokemon_info_2/models/pokemon_model.dart';
 import 'package:pokemon_info_2/services/api_service.dart';
-import 'package:pokemon_info_2/widgets/dialog_carregamento_api_widget.dart';
-import 'package:pokemon_info_2/widgets/dialog_insert_pokemon_widget.dart';
+import 'package:pokemon_info_2/widgets/dialog_carregamento_api.dart';
+import 'package:pokemon_info_2/widgets/dialog_insert_pokemon.dart';
+import 'package:pokemon_info_2/widgets/dialog_pokemon_inserido.dart';
 
 class PokemonController {
   final DatabaseController dbController = DatabaseController();
@@ -28,16 +29,27 @@ class PokemonController {
     }
   }
   
-  onSubmittedPokemonSearch(query, BuildContext context) async {
-    try {
-      PokemonModel result = await apiService.getAll(query);
-      await dbController.insertPokemon(result);
+  Future<void> onSubmittedPokemonSearch(query, BuildContext context) async {
+    final PokemonModel defaultPokemon = PokemonModel(id: -1, name: '', imgpath: '', moves: [], types: []);
 
-      // pokemons.value = [... pokemons.value, result]; //inserindo ao final da lista
-      await loadPokemonsDb(context);
+    final pokemonNaPokedex = pokemons.value.firstWhere(
+      (pokemon) => pokemon.id.toString() == query || pokemon.name.toLowerCase() == query.toLowerCase(),
+      orElse: () => defaultPokemon,
+    );
 
-    } catch (e) {
-      showErroInserPokemon(context, '$e');
+    if (pokemonNaPokedex == defaultPokemon) {
+      try {
+        PokemonModel result = await apiService.getAll(query);
+        await dbController.insertPokemon(result);
+
+        // pokemons.value = [... pokemons.value, result]; //inserindo ao final da lista
+        await loadPokemonsDb(context);
+
+      } catch (e) {
+        showErroInserPokemon(context, '$e');
+      }
+    } else {
+      showPokemonNaPokedex(context);
     }
   }
 
@@ -51,12 +63,15 @@ class PokemonController {
     final typeFilter = typeController.text.toLowerCase();
     final moveFilter = moveController.text.toLowerCase();
 
-    pokemonsFiltrados.value = pokemons.value.where((pokemon) {
-      final nameMatch = pokemon.name.toLowerCase().contains(nameFilter);
-      final typeMatch = pokemon.types.any((type) => type.toLowerCase().contains(typeFilter));
-      final moveMatch = pokemon.moves.any((move) => move.toLowerCase().contains(moveFilter));
-
-      return nameMatch && typeMatch && moveMatch;
-    }).toList();
+    if (nameFilter.isEmpty && typeFilter.isEmpty && moveFilter.isEmpty){
+      pokemonsFiltrados.value = pokemons.value;
+    } else {
+      pokemonsFiltrados.value = pokemons.value.where((pokemon) {
+        final nameMatch = pokemon.name.toLowerCase().contains(nameFilter);
+        final typeMatch = pokemon.types.any((type) => type.toLowerCase().contains(typeFilter));
+        final moveMatch = pokemon.moves.any((move) => move.toLowerCase().contains(moveFilter));
+        return nameMatch && typeMatch && moveMatch;
+      }).toList();
+    }
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:pokemon_info_2/controllers/pokemon_controller.dart';
-import 'package:pokemon_info_2/widgets/dialog_exclusao_pokemon_widget.dart';
+import 'package:pokemon_info_2/widgets/dialog_exclusao_pokemon.dart';
 import 'package:pokemon_info_2/widgets/filter_widget.dart';
 import 'package:pokemon_info_2/widgets/input_widget.dart';
 import 'package:pokemon_info_2/widgets/pokemon_gridview_widget.dart';
