@@ -32,7 +32,7 @@ class PokemonController {
   Future<void> onSubmittedPokemonSearch(query, BuildContext context) async {
     final PokemonModel defaultPokemon = PokemonModel(id: -1, name: '', imgpath: '', moves: [], types: []);
 
-    final pokemonNaPokedex = pokemons.value.firstWhere(
+    final pokemonNaPokedex = pokemonsFiltrados.value.firstWhere(
       (pokemon) => pokemon.id.toString() == query || pokemon.name.toLowerCase() == query.toLowerCase(),
       orElse: () => defaultPokemon,
     );
@@ -53,9 +53,11 @@ class PokemonController {
     }
   }
 
-  Future<void> deletePokemon(int id) async {
+  Future<void> deletePokemon(int id, BuildContext context) async {
     await dbController.deletePokemon(id);
     pokemonsFiltrados.value = pokemonsFiltrados.value.where((pokemon) => pokemon.id != id).toList();
+
+
   }
 
   void filter() {

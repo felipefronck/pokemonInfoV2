@@ -12,7 +12,7 @@ import 'package:pokemon_info_2/controllers/pokemon_controller.dart';
               child: Text('Sim'),
               onPressed: () async {
                 Navigator.of(context).pop();
-                await controller.deletePokemon(id);
+                await controller.deletePokemon(id, context);
               }
             ),
             CupertinoDialogAction(
