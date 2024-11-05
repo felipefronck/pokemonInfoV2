@@ -1,9 +1,11 @@
 // ignore_for_file: use_build_context_synchronously
 import 'package:flutter/cupertino.dart';
+import 'package:path/path.dart';
 import 'package:pokemon_info_2/controllers/db_controller.dart';
 import 'package:pokemon_info_2/models/pokemon_model.dart';
 import 'package:pokemon_info_2/services/api_service.dart';
 import 'package:pokemon_info_2/widgets/dialog_carregamento_api.dart';
+import 'package:pokemon_info_2/widgets/dialog_erro_filtragem.dart';
 import 'package:pokemon_info_2/widgets/dialog_insert_pokemon.dart';
 import 'package:pokemon_info_2/widgets/dialog_pokemon_inserido.dart';
 
@@ -58,20 +60,27 @@ class PokemonController {
     pokemonsFiltrados.value = pokemonsFiltrados.value.where((pokemon) => pokemon.id != id).toList();
   }
 
-  void filter() {
+  void filter(BuildContext context) { 
     final nameFilter = nameController.text.toLowerCase();
     final typeFilter = typeController.text.toLowerCase();
     final moveFilter = moveController.text.toLowerCase();
 
     if (nameFilter.isEmpty && typeFilter.isEmpty && moveFilter.isEmpty){
       pokemonsFiltrados.value = pokemons.value;
+    }
+
+    List<PokemonModel> aux = pokemons.value.where((pokemon) {
+      final nameMatch = pokemon.name.toLowerCase().contains(nameFilter);
+      final typeMatch = pokemon.types.any((type) => type.toLowerCase().contains(typeFilter));
+      final moveMatch = pokemon.moves.any((move) => move.toLowerCase().contains(moveFilter));
+      
+      return nameMatch && typeMatch && moveMatch;
+    }).toList();
+
+    if (aux.isEmpty){
+      showErroFiltragem(context, "Nenhum Pokemon corresponde aos filtros aplicados");
     } else {
-      pokemonsFiltrados.value = pokemons.value.where((pokemon) {
-        final nameMatch = pokemon.name.toLowerCase().contains(nameFilter);
-        final typeMatch = pokemon.types.any((type) => type.toLowerCase().contains(typeFilter));
-        final moveMatch = pokemon.moves.any((move) => move.toLowerCase().contains(moveFilter));
-        return nameMatch && typeMatch && moveMatch;
-      }).toList();
+      pokemonsFiltrados.value = aux;
     }
   }
 }

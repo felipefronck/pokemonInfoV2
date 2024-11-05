@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-  void showErroLoadDb(BuildContext context, String e) {
+  void showErroFiltragem(BuildContext context, String e) {
     showCupertinoDialog(
       context: context, 
       builder: (BuildContext context) {

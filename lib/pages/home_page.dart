@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
                   nameController: controller.nameController,
                   typeController: controller.typeController,
                   moveController: controller.moveController,
-                  onFilter: controller.filter,
+                  onFilter: () => controller.filter(context),
                 ),
                 Expanded(
                   child: PokemonGridviewWidget(
