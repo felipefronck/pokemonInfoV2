@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
   void showErroLoadDb(BuildContext context, String e) {
     showCupertinoDialog(
@@ -9,7 +10,12 @@ import 'package:flutter/cupertino.dart';
           content: Text(e),
           actions: [
             CupertinoDialogAction(
-              child: Text('Ok'),
+              child: Text('Ok',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
+                ),
+              ),
               onPressed: () {
               Navigator.of(context).pop();
             })
