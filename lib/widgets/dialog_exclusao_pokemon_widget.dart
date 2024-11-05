@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:pokemon_info_2/controllers/pokemon_controller.dart';
 
-  void showExcluirPokemon(BuildContext context, int id) {
+  void showExcluirPokemon(BuildContext context, int id, PokemonController controller) {
     showCupertinoDialog(
       context: context, 
       builder: (BuildContext context) {
@@ -11,8 +11,8 @@ import 'package:pokemon_info_2/controllers/pokemon_controller.dart';
             CupertinoDialogAction(
               child: Text('Sim'),
               onPressed: () async {
-                await PokemonController().deletePokemon(id);
                 Navigator.of(context).pop();
+                await controller.deletePokemon(id);
               }
             ),
             CupertinoDialogAction(

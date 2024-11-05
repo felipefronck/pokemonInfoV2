@@ -1,15 +1,18 @@
 import 'package:flutter/cupertino.dart';
+import 'package:pokemon_info_2/controllers/pokemon_controller.dart';
 import 'package:pokemon_info_2/models/pokemon_model.dart';
 import 'package:pokemon_info_2/widgets/pokemon_card_widget.dart';
 
 class PokemonGridviewWidget extends StatelessWidget{
   final List<PokemonModel> pokemons;
   final Function(int id) onDeletePokemon;
+  final PokemonController controller;
 
   const PokemonGridviewWidget({
     super.key, 
     required this.pokemons,
     required this.onDeletePokemon,
+    required this.controller,
     });
 
   @override
@@ -31,7 +34,8 @@ class PokemonGridviewWidget extends StatelessWidget{
                   final pokemon = pokemons[index];
                   return PokemonCardWidget(
                   pokemon: pokemon,
-                  onDelete: () => onDeletePokemon(pokemon.id)
+                  onDelete: () => onDeletePokemon(pokemon.id),
+                  controller: controller,
                   );
                 }
               )

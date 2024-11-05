@@ -1,16 +1,19 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:pokemon_info_2/controllers/pokemon_controller.dart';
 import 'package:pokemon_info_2/models/pokemon_model.dart';
 import 'package:pokemon_info_2/widgets/dialog_exclusao_pokemon_widget.dart';
 
 class PokemonCardWidget extends StatelessWidget {
   final PokemonModel pokemon;
   final VoidCallback onDelete;
+  final PokemonController controller;
 
   const PokemonCardWidget ({
     super.key, 
     required this.pokemon,
     required this.onDelete,
+    required this.controller
   });
 
   @override
@@ -67,7 +70,7 @@ class PokemonCardWidget extends StatelessWidget {
               alignment: Alignment.bottomRight,
               child: CupertinoButton(
                 padding: EdgeInsets.zero,
-                 onPressed: () => showExcluirPokemon(context, pokemon.id),
+                 onPressed: () => showExcluirPokemon(context, pokemon.id, controller),
                   child: Icon(
                   EvaIcons.trash2Outline,
                   size: 20,
