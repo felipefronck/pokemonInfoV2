@@ -3,10 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:pokemon_info_2/controllers/db_controller.dart';
 import 'package:pokemon_info_2/models/pokemon_model.dart';
 import 'package:pokemon_info_2/services/api_service.dart';
-import 'package:pokemon_info_2/widgets/dialog_carregamento_api.dart';
-import 'package:pokemon_info_2/widgets/dialog_erro_filtragem.dart';
-import 'package:pokemon_info_2/widgets/dialog_insert_pokemon.dart';
-import 'package:pokemon_info_2/widgets/dialog_pokemon_inserido.dart';
+import 'package:pokemon_info_2/widgets/dialogs/dialog_carregamento_api.dart';
+import 'package:pokemon_info_2/widgets/dialogs/dialog_erro_filtragem.dart';
+import 'package:pokemon_info_2/widgets/dialogs/dialog_insert_pokemon.dart';
+import 'package:pokemon_info_2/widgets/dialogs/dialog_pokemon_inserido.dart';
 
 class PokemonController {
   final DatabaseController dbController = DatabaseController();

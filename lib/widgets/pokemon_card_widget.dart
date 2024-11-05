@@ -2,7 +2,7 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:pokemon_info_2/controllers/pokemon_controller.dart';
 import 'package:pokemon_info_2/models/pokemon_model.dart';
-import 'package:pokemon_info_2/widgets/dialog_exclusao_pokemon.dart';
+import 'package:pokemon_info_2/widgets/dialogs/dialog_exclusao_pokemon.dart';
 
 class PokemonCardWidget extends StatelessWidget {
   final PokemonModel pokemon;
