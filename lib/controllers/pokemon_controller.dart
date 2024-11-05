@@ -1,6 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
 import 'package:flutter/cupertino.dart';
-import 'package:path/path.dart';
 import 'package:pokemon_info_2/controllers/db_controller.dart';
 import 'package:pokemon_info_2/models/pokemon_model.dart';
 import 'package:pokemon_info_2/services/api_service.dart';
@@ -57,6 +56,7 @@ class PokemonController {
 
   Future<void> deletePokemon(int id, BuildContext context) async {
     await dbController.deletePokemon(id);
+    pokemons.value = pokemons.value.where((pokemon) => pokemon.id != id).toList();
     pokemonsFiltrados.value = pokemonsFiltrados.value.where((pokemon) => pokemon.id != id).toList();
   }
 
@@ -69,7 +69,7 @@ class PokemonController {
       pokemonsFiltrados.value = pokemons.value;
     }
 
-    List<PokemonModel> aux = pokemons.value.where((pokemon) {
+    List<PokemonModel> aux = pokemonsFiltrados.value.where((pokemon) {
       final nameMatch = pokemon.name.toLowerCase().contains(nameFilter);
       final typeMatch = pokemon.types.any((type) => type.toLowerCase().contains(typeFilter));
       final moveMatch = pokemon.moves.any((move) => move.toLowerCase().contains(moveFilter));

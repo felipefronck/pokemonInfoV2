@@ -20,7 +20,7 @@ class PokemonGridviewWidget extends StatelessWidget{
     return Expanded(
       child:LayoutBuilder(
         builder: (context, constraints) {
-          int columns = (constraints.maxWidth / 180).floor();
+          int columns = (constraints.maxWidth / 200).floor();
 
           return Stack(
             children: [
