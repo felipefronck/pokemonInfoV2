@@ -94,6 +94,7 @@ class FilterWidget extends StatelessWidget {
                     const SizedBox(height: 20),
                     SizedBox(
                       height: 35,
+                      width: 250,
                       child: CupertinoButton(
                         onPressed: onFilter,
                         color: const Color.fromARGB(255, 63, 63, 65),

@@ -8,8 +8,9 @@ import 'package:flutter/cupertino.dart';
           title: Text('Erro'),
           content: Text(e),
           actions: [
-            CupertinoDialogAction(child: Text('Ok'),
-            onPressed: () {
+            CupertinoDialogAction(
+              child: Text('Ok'),
+              onPressed: () {
               Navigator.of(context).pop();
             })
           ]
