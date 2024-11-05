@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   path: ^1.9.0
   dio: ^5.7.0
+  eva_icons_flutter: ^3.1.0
 
 dev_dependencies:
   flutter_test:

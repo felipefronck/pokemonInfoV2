@@ -1,5 +1,7 @@
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:pokemon_info_2/models/pokemon_model.dart';
+import 'package:pokemon_info_2/widgets/dialog_exclusao_pokemon_widget.dart';
 
 class PokemonCardWidget extends StatelessWidget {
   final PokemonModel pokemon;
@@ -29,6 +31,8 @@ class PokemonCardWidget extends StatelessWidget {
           ]
         ),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               "#${pokemon.id.toString()}",
@@ -37,28 +41,36 @@ class PokemonCardWidget extends StatelessWidget {
               ),
               ),
             SizedBox(
-              child: Text(
-                pokemon.name.toUpperCase(),
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
+              width: double.infinity,
+              child: Center(
+                child: Text(
+                  pokemon.name.toUpperCase(),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-                ),
-            ),
-              const SizedBox(height: 20),
-            SizedBox(
-              width: 65,
-              height: 65,
-              child: Image.network(
-                pokemon.imgpath,
-                fit: BoxFit.scaleDown,
               ),
             ),
+              const SizedBox(height: 15),
+            SizedBox(
+              width: 50,
+              height: 50,
+              child: Image.network(
+                pokemon.imgpath,
+                fit: BoxFit.contain,
+              ),
+            ),
+            const Spacer(),
             Align(
               alignment: Alignment.bottomRight,
               child: CupertinoButton(
-                 onPressed: onDelete,
-                child: Icon(
-                CupertinoIcons.delete
+                padding: EdgeInsets.zero,
+                 onPressed: () => showExcluirPokemon(context, pokemon.id),
+                  child: Icon(
+                  EvaIcons.trash2Outline,
+                  size: 20,
                 )
               ),
             )

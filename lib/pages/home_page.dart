@@ -45,8 +45,8 @@ class _HomePageState extends State<HomePage> {
                   child: PokemonGridviewWidget(
                     pokemons: pokemonsFiltrados,
                     onDeletePokemon: (id) {
-                      controller.deletePokemon(id);
-                      showExcluirPokemon(context);
+                      // controller.deletePokemon(id);
+                      showExcluirPokemon(context, id);
                     })
                   )
               ]

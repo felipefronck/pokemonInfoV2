@@ -14,18 +14,31 @@ class PokemonGridviewWidget extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      itemCount: pokemons.length,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 7
-        ), 
-      itemBuilder: (context, index) {
-        final pokemon = pokemons[index];
-        return PokemonCardWidget(
-          pokemon: pokemon,
-          onDelete: () => onDeletePokemon(pokemon.id)
+    return Expanded(
+      child:LayoutBuilder(
+        builder: (context, constraints) {
+          int columns = (constraints.maxWidth / 180).floor();
+
+          return Stack(
+            children: [
+              GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: columns,
+                  childAspectRatio: 1,
+                  ), 
+                itemCount: pokemons.length,
+                itemBuilder: (context, index) {
+                  final pokemon = pokemons[index];
+                  return PokemonCardWidget(
+                  pokemon: pokemon,
+                  onDelete: () => onDeletePokemon(pokemon.id)
+                  );
+                }
+              )
+            ]
           );
-      }
+        }
+      )
     );
   }
 }
