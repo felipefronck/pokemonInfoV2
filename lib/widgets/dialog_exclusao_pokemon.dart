@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:pokemon_info_2/controllers/pokemon_controller.dart';
 
   void showExcluirPokemon(BuildContext context, int id, PokemonController controller) {
@@ -9,14 +10,24 @@ import 'package:pokemon_info_2/controllers/pokemon_controller.dart';
           title: Text('Deseja excluir o item?'),
           actions: [
             CupertinoDialogAction(
-              child: Text('Sim'),
+              child: Text('SIM',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
+                ),
+              ),
               onPressed: () async {
                 Navigator.of(context).pop();
                 await controller.deletePokemon(id, context);
               }
             ),
             CupertinoDialogAction(
-              child: Text('Não'),
+              child: Text('NÃO',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
+                ),
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
               },
