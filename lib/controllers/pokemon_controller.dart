@@ -56,8 +56,6 @@ class PokemonController {
   Future<void> deletePokemon(int id, BuildContext context) async {
     await dbController.deletePokemon(id);
     pokemonsFiltrados.value = pokemonsFiltrados.value.where((pokemon) => pokemon.id != id).toList();
-
-
   }
 
   void filter() {
