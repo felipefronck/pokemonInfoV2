@@ -60,27 +60,30 @@ class PokemonController {
     pokemonsFiltrados.value = pokemonsFiltrados.value.where((pokemon) => pokemon.id != id).toList();
   }
 
-  void filter(BuildContext context) { 
+  void filter(BuildContext context) async { 
     final nameFilter = nameController.text.toLowerCase();
     final typeFilter = typeController.text.toLowerCase();
     final moveFilter = moveController.text.toLowerCase();
 
-    if (nameFilter.isEmpty && typeFilter.isEmpty && moveFilter.isEmpty){
-      pokemonsFiltrados.value = pokemons.value;
-    }
+    try {
+      if (nameFilter.isEmpty && typeFilter.isEmpty && moveFilter.isEmpty){
+        pokemonsFiltrados.value = pokemons.value;
+        return;
+      }
 
-    List<PokemonModel> aux = pokemonsFiltrados.value.where((pokemon) {
-      final nameMatch = pokemon.name.toLowerCase().contains(nameFilter);
-      final typeMatch = pokemon.types.any((type) => type.toLowerCase().contains(typeFilter));
-      final moveMatch = pokemon.moves.any((move) => move.toLowerCase().contains(moveFilter));
-      
-      return nameMatch && typeMatch && moveMatch;
-    }).toList();
+      final aux = await dbController.filterPokemons(
+        name: nameFilter.isNotEmpty ? nameFilter : null,
+        type: typeFilter.isNotEmpty ? typeFilter : null,
+        move: moveFilter.isNotEmpty ? moveFilter : null,
+      );
 
-    if (aux.isEmpty){
-      showErroFiltragem(context, "Nenhum Pokemon corresponde aos filtros aplicados");
-    } else {
-      pokemonsFiltrados.value = aux;
+      if(aux.isEmpty) {
+        showErroFiltragem(context, 'Nenhum Pokemon corresponde aos filtros aplicados.');
+      } else {
+        pokemonsFiltrados.value = aux;
+      }
+    } catch (e) {
+      showErroFiltragem(context, 'Erro ao aplicar filtros: $e');
     }
   }
 }

@@ -32,4 +32,40 @@ class DatabaseController {
       whereArgs: [id],
     );
   }
+
+  Future<List<PokemonModel>> filterPokemons({
+    String? name,
+    String? type,
+    String? move,
+  }) async {
+    final db = await Db.instance.database;
+
+    List<String> whereClause = [];
+    List<String> whereArgs = [];
+
+    if (name != null) {
+      whereClause.add('nome LIKE ?');
+      whereArgs.add('%$name%');
+    }
+
+    if (move != null) {
+      whereClause.add('movimentos LIKE ?');
+      whereArgs.add('%$move%');
+    }
+
+    if (type != null) {
+      whereClause.add('tipos LIKE ?');
+      whereArgs.add('%$type%');
+    }
+
+    final List<Map<String, dynamic>> maps = await db.query(
+      'pokemon', 
+      where: whereClause.join(" AND "),
+      whereArgs: whereArgs,
+    );
+
+    return List.generate(maps.length, (index) {
+      return PokemonModel.fromMap(maps[index]);
+    });
+  }
 }
