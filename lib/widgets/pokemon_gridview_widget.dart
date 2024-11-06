@@ -28,7 +28,7 @@ class PokemonGridviewWidget extends StatelessWidget{
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: columns,
                   childAspectRatio: 1,
-                  ), 
+                ), 
                 itemCount: pokemons.length,
                 itemBuilder: (context, index) {
                   final pokemon = pokemons[index];
