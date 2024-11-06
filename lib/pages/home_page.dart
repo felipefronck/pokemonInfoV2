@@ -48,8 +48,9 @@ class _HomePageState extends State<HomePage> {
                     onDeletePokemon: (id) {
                       // controller.deletePokemon(id);
                       showExcluirPokemon(context, id, pkController);
-                    })
+                    }
                   )
+                )
               ]
             );
           },
