@@ -24,7 +24,7 @@ class PokemonModel {
         types: List<String>.from(apiResponse['types'].map((type) => type['type']['name'])),
       );
   }
-
+    //para inserção no db
   Map<String, dynamic> toMap() {
     return {
       'id': id,
@@ -34,7 +34,7 @@ class PokemonModel {
       'tipos': jsonEncode(types),
     };
   }
-
+    //do db para model
   factory PokemonModel.fromMap(Map<String, dynamic> map){
     return PokemonModel(
       id: map['id'],
