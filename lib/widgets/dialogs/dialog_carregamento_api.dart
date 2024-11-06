@@ -18,7 +18,8 @@ import 'package:flutter/material.dart';
               ),
               onPressed: () {
               Navigator.of(context).pop();
-            })
+              }
+            )
           ]
         );
       }
