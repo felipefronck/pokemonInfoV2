@@ -8,9 +8,10 @@ class DatabaseController {
     final db = await Db.instance.database;
     final List<Map<String, dynamic>> pokemons = await db.query('pokemon');
 
-    return List.generate(pokemons.length, (index) {
-      return PokemonModel.fromMap(pokemons[index]);
-    });
+    // return List.generate(pokemons.length, (index) {
+      // return PokemonModel.fromMap(pokemons[index]);
+    // });
+    return pokemons.map(PokemonModel.fromMap).toList();
   }
 
   Future<void> insertPokemon(PokemonModel pokemon) async {
@@ -64,8 +65,9 @@ class DatabaseController {
       whereArgs: whereArgs,
     );
 
+    // return maps.map(PokemonModel.fromMap).toList;
     return List.generate(maps.length, (index) {
       return PokemonModel.fromMap(maps[index]);
-    });
+    });    
   }
 }
