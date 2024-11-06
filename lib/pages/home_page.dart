@@ -13,12 +13,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final PokemonController controller = PokemonController();
+  final PokemonController pkController = PokemonController();
 
   @override
   void initState() {
     super.initState();
-    controller.loadPokemonsDb(context);
+    pkController.loadPokemonsDb(context);
   }
 
   @override
@@ -26,28 +26,28 @@ class _HomePageState extends State<HomePage> {
     return CupertinoPageScaffold(
       child: SafeArea( 
         child: ValueListenableBuilder(
-          valueListenable: controller.pokemonsFiltrados,
+          valueListenable: pkController.pokemonsFiltrados,
           builder:(context, pokemonsFiltrados, _) {
             return Column(
               children: [
                 InputWidget(
                   onSubmittedPokemonSearch: (query) {
-                    controller.onSubmittedPokemonSearch(query, context);
+                    pkController.onSubmittedPokemonSearch(query, context);
                   },
                 ),
                 FilterWidget(
-                  nameController: controller.nameController,
-                  typeController: controller.typeController,
-                  moveController: controller.moveController,
-                  onFilter: () => controller.filter(context),
+                  nameController: pkController.nameController,
+                  typeController: pkController.typeController,
+                  moveController: pkController.moveController,
+                  onFilter: () => pkController.filter(context),
                 ),
                 Expanded(
                   child: PokemonGridviewWidget(
                     pokemons: pokemonsFiltrados,
-                    controller: controller,
+                    controller: pkController,
                     onDeletePokemon: (id) {
                       // controller.deletePokemon(id);
-                      showExcluirPokemon(context, id, controller);
+                      showExcluirPokemon(context, id, pkController);
                     })
                   )
               ]
